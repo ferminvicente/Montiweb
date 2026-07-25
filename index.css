@@ -388,6 +388,37 @@ video {
   background-color: var(--color-black);
 }
 
+/* Hero compacto para páginas de servicio - 70vh para que el video se vea
+   sin cortar cabezas y dando sensación de continuidad hacia abajo */
+.hero.hero-sm {
+  height: 80vh;
+  min-height: 620px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: calc(var(--header-height) + 2.5rem);
+  box-sizing: border-box;
+}
+
+.hero.hero-sm .hero-content {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.hero.hero-sm .hero-video-container video {
+  object-position: center 30%;
+}
+
+@media (max-width: 768px) {
+  .hero.hero-sm {
+    height: auto;
+    min-height: 520px;
+    padding-top: calc(var(--header-height) + 3rem);
+    padding-bottom: 3rem;
+  }
+}
+
 .hero-video-container {
   position: absolute;
   top: 0;
@@ -422,6 +453,7 @@ video {
   color: var(--color-light);
   max-width: 1000px;
   padding: 0 1.5rem;
+  margin-top: calc(var(--header-height) + 2.5rem);
 }
 
 .hero-tagline {
