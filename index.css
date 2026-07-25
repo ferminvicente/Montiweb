@@ -1687,9 +1687,9 @@ video {
 
 /* Wedding Hero - CSS-only cross-fade carousel */
 .wedding-hero {
-  height: 70vh;
-  min-height: 500px;
-  max-height: 700px;
+  height: 85vh;
+  min-height: 600px;
+  max-height: 800px;
 }
 
 .wedding-hero-bg {
@@ -1885,15 +1885,15 @@ video {
 
 @media (max-width: 992px) {
   .wedding-hero {
-    height: 55vh;
-    min-height: 400px;
+    height: 60vh;
+    min-height: 450px;
   }
 }
 
 @media (max-width: 768px) {
   .wedding-hero {
-    height: 50vh;
-    min-height: 350px;
+    height: 55vh;
+    min-height: 400px;
   }
 
   .wedding-hero-bg {
