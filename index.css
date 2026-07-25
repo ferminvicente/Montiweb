@@ -1416,8 +1416,8 @@ video {
 }
 
 .plan-card {
-  background-color: var(--color-gray-900);
-  border: 1px solid var(--color-gray-800);
+  background-color: var(--color-light);
+  border: 1px solid var(--color-gray-300);
   border-radius: var(--border-radius);
   padding: 2.5rem 1.75rem;
   position: relative;
@@ -1429,12 +1429,13 @@ video {
 .plan-card:hover {
   transform: translateY(-6px);
   border-color: var(--color-gray-500);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
 }
 
 .plan-card-featured {
-  border-color: var(--color-gray-600);
-  background-color: rgba(255, 255, 255, 0.04);
+  border-color: var(--color-black);
+  border-width: 2px;
+  background-color: var(--color-light);
 }
 
 .plan-badge {
@@ -1458,7 +1459,7 @@ video {
   font-family: var(--font-heading);
   font-size: var(--fs-lg);
   font-weight: 700;
-  color: var(--color-light);
+  color: var(--color-black);
   margin-bottom: 1.5rem;
   margin-top: 0.5rem;
   text-align: center;
@@ -1467,7 +1468,7 @@ video {
 .plan-price {
   text-align: center;
   margin-bottom: 0.25rem;
-  color: var(--color-light);
+  color: var(--color-black);
 }
 
 .plan-currency {
@@ -1477,7 +1478,7 @@ video {
 }
 
 .plan-amount {
-  font-size: clamp(2.2rem, 1.8rem + 2vw, 3.2rem);
+  font-size: var(--fs-xl);
   font-weight: 800;
   letter-spacing: -2px;
   line-height: 1;
@@ -1485,14 +1486,14 @@ video {
 
 .plan-period {
   font-size: var(--fs-sm);
-  color: var(--color-gray-500);
+  color: var(--color-gray-700);
   font-weight: 400;
 }
 
 .plan-tax {
   text-align: center;
   font-size: var(--fs-xs);
-  color: var(--color-gray-500);
+  color: var(--color-gray-700);
   margin-bottom: 1.5rem;
 }
 
@@ -1511,7 +1512,7 @@ video {
   align-items: flex-start;
   gap: 0.6rem;
   font-size: var(--fs-sm);
-  color: var(--color-gray-300);
+  color: var(--color-black);
   line-height: 1.5;
 }
 
@@ -1521,7 +1522,7 @@ video {
   width: 18px;
   height: 18px;
   margin-top: 3px;
-  background-color: var(--color-light);
+  background-color: var(--color-black);
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E") no-repeat center;
   mask-size: contain;
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E") no-repeat center;
@@ -1529,40 +1530,40 @@ video {
 }
 
 .plan-bonus {
-  background-color: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--color-gray-800);
+  background-color: var(--color-gray-100);
+  border: 1px solid var(--color-gray-200);
   border-radius: var(--border-radius-sm);
   padding: 0.85rem;
   margin-bottom: 1.25rem;
   font-size: var(--fs-xs);
-  color: var(--color-gray-300);
+  color: var(--color-gray-700);
   line-height: 1.6;
 }
 
 .plan-bonus strong {
-  color: var(--color-light);
+  color: var(--color-black);
   display: block;
   margin-bottom: 0.25rem;
 }
 
 .plan-bonus-note {
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-gray-300);
   font-style: italic;
 }
 
 .plan-delivery {
-  background-color: rgba(255, 255, 255, 0.04);
-  border: 1px dashed var(--color-gray-700);
+  background-color: var(--color-gray-100);
+  border: 1px dashed var(--color-gray-300);
   border-radius: var(--border-radius-sm);
   padding: 0.7rem 1rem;
   text-align: center;
   font-size: var(--fs-xs);
-  color: var(--color-gray-300);
+  color: var(--color-gray-700);
   margin-bottom: 1.5rem;
 }
 
 .plan-delivery strong {
-  color: var(--color-light);
+  color: var(--color-black);
 }
 
 .plan-cta {
@@ -1585,5 +1586,83 @@ video {
 @media (max-width: 768px) {
   .plan-card {
     padding: 2rem 1.25rem;
+  }
+}
+
+/* ==========================================================================
+   LOGOS CAROUSEL (Escolares page)
+   ========================================================================== */
+
+.section-logos {
+  background-color: var(--color-offwhite);
+  padding: 5rem 0;
+  overflow: hidden;
+}
+
+.logos-track-wrapper {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 2.5rem;
+}
+
+.logos-track {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  animation: logosScroll 30s linear infinite;
+  width: max-content;
+}
+
+.logos-track:hover {
+  animation-play-state: paused;
+}
+
+.logo-item {
+  flex-shrink: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.5rem;
+}
+
+.logo-item img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.6);
+  transition: var(--transition-smooth);
+  max-width: 180px;
+}
+
+.logo-item:hover img {
+  filter: grayscale(0%) opacity(1);
+}
+
+@keyframes logosScroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-logos {
+    padding: 3rem 0;
+  }
+
+  .logos-track {
+    gap: 2rem;
+  }
+
+  .logo-item {
+    height: 60px;
+  }
+
+  .logo-item img {
+    max-width: 140px;
   }
 }
