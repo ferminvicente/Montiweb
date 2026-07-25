@@ -1654,6 +1654,11 @@ video {
     padding: 3rem 0;
   }
 
+  .section-logos .section-header h2 {
+    font-size: clamp(1.1rem, 0.8rem + 1.5vw, 1.5rem);
+    white-space: nowrap;
+  }
+
   .logos-track {
     gap: 2rem;
   }
