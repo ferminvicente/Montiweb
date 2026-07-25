@@ -949,27 +949,37 @@ video {
 }
 
 .footer-socials {
-  display: flex;
-  gap: 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
 }
 
 .social-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid var(--color-gray-800);
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: var(--color-gray-300);
+  gap: 0.5rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--color-gray-800);
+  color: var(--color-light);
+  font-size: var(--fs-xs);
+  font-family: var(--font-body);
+  font-weight: 500;
+  white-space: nowrap;
   transition: var(--transition-smooth);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.social-icon svg {
+  flex-shrink: 0;
 }
 
 .social-icon:hover {
   background-color: var(--color-light);
   color: var(--color-black);
   border-color: var(--color-light);
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 .footer-title {
@@ -1656,7 +1666,6 @@ video {
 
   .section-logos .section-header h2 {
     font-size: clamp(1.1rem, 0.8rem + 1.5vw, 1.5rem);
-    white-space: nowrap;
   }
 
   .logos-track {

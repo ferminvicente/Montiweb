@@ -3,7 +3,7 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  
+
   // 1. STICKY HEADER SCROLL CLASS
   const header = document.getElementById('header');
   const checkScroll = () => {
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
       header.classList.remove('scrolled');
     }
   };
-  
+
   // Run on load and on scroll
   checkScroll();
   window.addEventListener('scroll', checkScroll, { passive: true });
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 3. SCROLL REVEAL ANIMATIONS (Intersection Observer)
   const revealElements = document.querySelectorAll('.reveal');
-  
+
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 4. STATISTICS COUNTER ANIMATION
   const statNumbers = document.querySelectorAll('.stat-number');
-  
+
   const animateCounter = (el) => {
     const target = parseInt(el.getAttribute('data-target'), 10);
     const duration = 2000; // 2 seconds animation
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateValue = () => {
       current += increment;
       stepCount++;
-      
+
       if (stepCount >= steps) {
         // Guarantee final exact target value is written with +/plus formatting
         el.textContent = target >= 1000 ? `+${target.toLocaleString()}` : `+${target}`;
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(updateValue);
       }
     };
-    
+
     requestAnimationFrame(updateValue);
   };
 
@@ -115,4 +115,33 @@ document.addEventListener('DOMContentLoaded', () => {
   statNumbers.forEach(num => {
     counterObserver.observe(num);
   });
+
+
+  // 5. FOOTER WHATSAPP SENDER
+  const wpBtn = document.getElementById('footer-wp-btn');
+  if (wpBtn) {
+    wpBtn.addEventListener('click', function (e) {
+      const msgEl = document.getElementById('footer-wp-message');
+      const message = msgEl.value.trim();
+      const defaultMsg = 'Hola Monti, estoy interesado en sus servicios. ¿qué necesitas para comenzar a trabajar con nosotros?';
+      const text = message || defaultMsg;
+      const url = 'https://wa.me/18097124444?text=' + encodeURIComponent(text);
+
+      // Visual feedback
+      const originalText = this.innerHTML;
+      this.innerHTML = '✓ Abriendo WhatsApp...';
+      this.disabled = true;
+      this.style.opacity = '0.7';
+
+      // Open WhatsApp
+      window.location.href = url;
+
+      // Restore button after 2s
+      setTimeout(() => {
+        this.innerHTML = originalText;
+        this.disabled = false;
+        this.style.opacity = '1';
+      }, 2000);
+    });
+  }
 });
