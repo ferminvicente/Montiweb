@@ -1699,7 +1699,7 @@ video {
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: center bottom;
+  background-position: center left;
   opacity: 0;
   animation: heroFade 25s ease-in-out infinite;
   z-index: 1;
