@@ -1401,3 +1401,189 @@ video {
     min-height: 280px;
   }
 }
+
+/* ==========================================================================
+   PLANS / PRICING CARDS (Escolares page)
+   ========================================================================== */
+
+.planes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.plan-card {
+  background-color: var(--color-gray-900);
+  border: 1px solid var(--color-gray-800);
+  border-radius: var(--border-radius);
+  padding: 2.5rem 1.75rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-smooth);
+}
+
+.plan-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-gray-500);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
+}
+
+.plan-card-featured {
+  border-color: var(--color-gray-600);
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.plan-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-light);
+  color: var(--color-black);
+  font-family: var(--font-heading);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  padding: 0.3rem 1.2rem;
+  border-radius: 50px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.plan-name {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--color-light);
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.plan-price {
+  text-align: center;
+  margin-bottom: 0.25rem;
+  color: var(--color-light);
+}
+
+.plan-currency {
+  font-size: var(--fs-md);
+  font-weight: 500;
+  vertical-align: super;
+}
+
+.plan-amount {
+  font-size: clamp(2.2rem, 1.8rem + 2vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.plan-period {
+  font-size: var(--fs-sm);
+  color: var(--color-gray-500);
+  font-weight: 400;
+}
+
+.plan-tax {
+  text-align: center;
+  font-size: var(--fs-xs);
+  color: var(--color-gray-500);
+  margin-bottom: 1.5rem;
+}
+
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  flex: 1;
+}
+
+.plan-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: var(--fs-sm);
+  color: var(--color-gray-300);
+  line-height: 1.5;
+}
+
+.plan-features li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  background-color: var(--color-light);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E") no-repeat center;
+  mask-size: contain;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E") no-repeat center;
+  -webkit-mask-size: contain;
+}
+
+.plan-bonus {
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--color-gray-800);
+  border-radius: var(--border-radius-sm);
+  padding: 0.85rem;
+  margin-bottom: 1.25rem;
+  font-size: var(--fs-xs);
+  color: var(--color-gray-300);
+  line-height: 1.6;
+}
+
+.plan-bonus strong {
+  color: var(--color-light);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.plan-bonus-note {
+  border-color: rgba(255, 255, 255, 0.1);
+  font-style: italic;
+}
+
+.plan-delivery {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px dashed var(--color-gray-700);
+  border-radius: var(--border-radius-sm);
+  padding: 0.7rem 1rem;
+  text-align: center;
+  font-size: var(--fs-xs);
+  color: var(--color-gray-300);
+  margin-bottom: 1.5rem;
+}
+
+.plan-delivery strong {
+  color: var(--color-light);
+}
+
+.plan-cta {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+/* Responsive: 3 cols -> 1 col */
+@media (max-width: 1024px) {
+  .planes-grid {
+    grid-template-columns: 1fr;
+    max-width: 550px;
+  }
+}
+
+@media (max-width: 768px) {
+  .plan-card {
+    padding: 2rem 1.25rem;
+  }
+}
