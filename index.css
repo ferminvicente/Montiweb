@@ -1680,3 +1680,235 @@ video {
     max-width: 140px;
   }
 }
+
+/* ==========================================================================
+   WEDDING PAGE
+   ========================================================================== */
+
+/* Wedding Hero - CSS-only cross-fade carousel */
+.wedding-hero {
+  height: 70vh;
+  min-height: 500px;
+  max-height: 700px;
+}
+
+.wedding-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center 30%;
+  opacity: 0;
+  animation: heroFade 25s ease-in-out infinite;
+  z-index: 1;
+}
+
+.wedding-hero-bg:nth-child(1) {
+  background-image: url('img/wedding/hero/1.jpg');
+  animation-delay: 0s;
+}
+
+.wedding-hero-bg:nth-child(2) {
+  background-image: url('img/wedding/hero/11.jpg');
+  animation-delay: 5s;
+}
+
+.wedding-hero-bg:nth-child(3) {
+  background-image: url('img/wedding/hero/13.jpg');
+  animation-delay: 10s;
+}
+
+.wedding-hero-bg:nth-child(4) {
+  background-image: url('img/wedding/hero/15.jpg');
+  animation-delay: 15s;
+}
+
+.wedding-hero-bg:nth-child(5) {
+  background-image: url('img/wedding/hero/18.jpg');
+  animation-delay: 20s;
+}
+
+@keyframes heroFade {
+
+  0%,
+  12% {
+    opacity: 0;
+  }
+
+  16%,
+  28% {
+    opacity: 1;
+  }
+
+  32%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.wedding-tagline {
+  color: var(--color-light) !important;
+}
+
+.wedding-title {
+  color: var(--color-light) !important;
+  font-size: var(--fs-xxl);
+}
+
+.wedding-subtitle {
+  color: var(--color-light) !important;
+  font-weight: 300;
+  max-width: 700px;
+}
+
+/* Wedding section background */
+.section-wedding-plans {
+  background-color: var(--color-offwhite);
+  padding: 6rem 0;
+}
+
+/* Wedding image */
+.wedding-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius-sm);
+}
+
+.wedding-image {
+  width: 100%;
+  height: 100%;
+  min-height: 350px;
+  object-fit: cover;
+  border-radius: var(--border-radius-sm);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+  display: block;
+}
+
+.wedding-image:hover {
+  transform: scale(1.03);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* Subtle shimmer effect on hover */
+.wedding-image-wrapper::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 60%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wedding-image-wrapper:hover::after {
+  opacity: 1;
+  animation: weddingShimmer 1.5s ease-in-out;
+}
+
+@keyframes weddingShimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* Wedding plan card - no borders, editorial style */
+.wedding-plan-card {
+  padding: 2.5rem;
+  border-radius: 0;
+}
+
+.wedding-plan-card h3 {
+  font-family: var(--font-heading);
+  font-size: var(--fs-md);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--color-black);
+  letter-spacing: -0.5px;
+}
+
+.wedding-plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.wedding-plan-features li {
+  padding: 0.5rem 0;
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  border-bottom: 1px solid var(--color-gray-200);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wedding-plan-features li::before {
+  content: '✦';
+  color: var(--color-gray-500);
+  font-size: 0.6rem;
+}
+
+.wedding-plan-features li:last-child {
+  border-bottom: none;
+}
+
+.wedding-plan-price {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--color-black);
+  margin-top: 1.25rem;
+  letter-spacing: -0.5px;
+}
+
+/* Wedding plan CTA */
+.wedding-plan-card .plan-cta {
+  margin-top: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 992px) {
+  .wedding-hero {
+    height: 55vh;
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wedding-hero {
+    height: 50vh;
+    min-height: 350px;
+  }
+
+  .wedding-title {
+    font-size: var(--fs-xl);
+  }
+
+  .wedding-plan-card {
+    padding: 1.5rem;
+  }
+
+  .wedding-image {
+    min-height: 250px;
+  }
+
+  .split-layout[style*="margin-bottom: 5rem"] {
+    margin-bottom: 2.5rem !important;
+  }
+}
