@@ -1,0 +1,138 @@
+/* ==========================================================================
+   DESIGN SYSTEM - MONTIPAGE MEDIA GROUP
+   ========================================================================== */
+
+/* Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Design Tokens & Variables */
+:root {
+    /* Color System */
+    --color-black: #000000;
+    --color-dark: #0a0a0a;
+    --color-light: #ffffff;
+    --color-offwhite: #fafafa;
+    --color-gray-100: #f5f5f7;
+    --color-gray-200: #e5e5e7;
+    --color-gray-300: #d1d1d6;
+    --color-gray-500: #8e8e93;
+    --color-gray-700: #48484a;
+    --color-gray-800: #1c1c1e;
+    --color-gray-900: #121212;
+
+    /* Accent Colors (Minimal Monochrome) */
+    --accent-color: var(--color-light);
+    --accent-color-rgb: 255, 255, 255;
+
+    /* Semantic Mappings */
+    --bg-primary: var(--color-light);
+    --bg-secondary: var(--color-gray-100);
+    --bg-dark-section: var(--color-dark);
+    --bg-card: var(--color-light);
+    --bg-card-dark: var(--color-gray-900);
+
+    --text-primary: var(--color-black);
+    --text-secondary: var(--color-gray-700);
+    --text-muted: var(--color-gray-500);
+    --text-inverse: var(--color-light);
+
+    --border-color: var(--color-gray-200);
+    --border-color-dark: rgba(255, 255, 255, 0.08);
+
+    /* Fonts */
+    --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-body: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+    /* Typography Fluid Scale (clamp) */
+    --fs-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+    --fs-sm: clamp(0.875rem, 0.8rem + 0.3vw, 1rem);
+    --fs-base: clamp(1rem, 0.95rem + 0.4vw, 1.125rem);
+    --fs-md: clamp(1.25rem, 1.15rem + 0.6vw, 1.5rem);
+    --fs-lg: clamp(1.5rem, 1.35rem + 0.8vw, 2rem);
+    --fs-xl: clamp(2rem, 1.75rem + 1.2vw, 3rem);
+    --fs-xxl: clamp(3rem, 2.5rem + 2.5vw, 5.5rem);
+    /* Giant headings for Hero */
+
+    /* Layout */
+    --max-width: 1400px;
+    --header-height: 80px;
+    --border-radius: 12px;
+    --border-radius-sm: 8px;
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.2s ease;
+}
+
+/* Base Reset & Styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--color-black);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    background-color: var(--bg-primary);
+    overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-gray-800);
+    border: 2px solid var(--color-dark);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray-700);
+}
+
+/* Typography elements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text-primary);
+}
+
+p {
+    color: var(--text-secondary);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+img,
+video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}

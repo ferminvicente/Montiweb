@@ -341,12 +341,13 @@ video {
     right: -100%;
     width: 80%;
     max-width: 320px;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     background-color: var(--color-dark);
     flex-direction: column;
     justify-content: center;
-    gap: 3rem;
-    padding: 2rem;
+    gap: 2rem;
+    padding: 6rem 2rem 4rem;
     transition: var(--transition-smooth);
     border-left: 1px solid var(--border-color-dark);
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
@@ -388,22 +389,10 @@ video {
   background-color: #1a1a1a;
 }
 
-/* Hero compacto para páginas de servicio - 70vh para que el video se vea
-   sin cortar cabezas y dando sensación de continuidad hacia abajo */
+/* Hero compacto para páginas de servicio */
 .hero.hero-sm {
-  height: 80vh;
-  min-height: 620px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: calc(var(--header-height) + 2.5rem);
-  box-sizing: border-box;
-}
-
-.hero.hero-sm .hero-content {
-  margin-top: 0;
-  padding-top: 0;
+  height: 100vh;
+  min-height: 680px;
 }
 
 .hero.hero-sm .hero-video-container video {
@@ -428,11 +417,8 @@ video {
 }
 
 @media (max-width: 768px) {
-  .hero.hero-sm {
-    height: auto;
-    min-height: 520px;
-    padding-top: calc(var(--header-height) + 3rem);
-    padding-bottom: 3rem;
+  .hero.hero-sm .hero-video-container video {
+    object-position: center 30%;
   }
 }
 
@@ -542,6 +528,15 @@ video {
   letter-spacing: 2px;
   text-transform: uppercase;
   opacity: 0.7;
+}
+
+/* When scroll indicator is inside hero-content (relative positioning) */
+.hero-content .hero-scroll-indicator {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  margin-top: 3rem;
 }
 
 .hero-scroll-indicator span {
@@ -1510,118 +1505,9 @@ video {
 
 /* ==========================================================================
    PAGE HERO (Small Banner for Independent Service Pages)
+   NOTE: No longer used; pages migrated to .hero.hero-sm
+   Kept for reference in case of future use.
    ========================================================================== */
-
-/* Video background inside page hero */
-.page-hero-video-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.page-hero-video-container .page-hero-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
-  opacity: 0.5;
-}
-
-.page-hero {
-  height: 55vh;
-  min-height: 420px;
-  max-height: 600px;
-  width: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-color: var(--color-black);
-  background-image: linear-gradient(135deg, var(--color-dark) 0%, var(--color-gray-900) 100%);
-  margin-top: var(--header-height);
-}
-
-.page-hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.85) 100%);
-  z-index: 2;
-}
-
-.page-hero-content {
-  position: relative;
-  z-index: 3;
-  text-align: center;
-  color: var(--color-light);
-  max-width: 800px;
-  padding: 0 1.5rem;
-}
-
-.page-hero-tagline {
-  font-family: var(--font-heading);
-  font-size: var(--fs-sm);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  margin-bottom: 1rem;
-  color: var(--color-gray-300);
-}
-
-.page-hero-title {
-  font-family: var(--font-heading);
-  font-size: var(--fs-xl);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -1px;
-  margin-bottom: 1.25rem;
-}
-
-.page-hero-subtitle {
-  font-family: var(--font-body);
-  font-size: var(--fs-base);
-  font-weight: 300;
-  max-width: 600px;
-  margin: 0 auto;
-  color: var(--color-gray-300);
-  line-height: 1.6;
-}
-
-@media (max-width: 992px) {
-  .page-hero {
-    height: 45vh;
-    min-height: 360px;
-  }
-}
-
-@media (max-width: 768px) {
-  .page-hero {
-    height: 40vh;
-    min-height: 320px;
-  }
-
-  .page-hero-title {
-    font-size: var(--fs-lg);
-  }
-}
-
-@media (max-width: 576px) {
-  .page-hero {
-    height: 50vh;
-    min-height: 280px;
-  }
-}
 
 /* ==========================================================================
    PLANS / PRICING CARDS (Escolares page)
@@ -1896,13 +1782,8 @@ video {
    WEDDING PAGE
    ========================================================================== */
 
-/* Wedding Hero - CSS-only cross-fade carousel */
-.wedding-hero {
-  height: 85vh;
-  min-height: 600px;
-  max-height: 800px;
-}
-
+/* Wedding Hero - CSS-only cross-fade carousel
+   NOTE: Uses .hero.hero-sm base for sizing; only animation remains here. */
 .wedding-hero-bg {
   position: absolute;
   top: 0;
@@ -2085,19 +1966,7 @@ video {
   gap: 0.5rem;
 }
 
-@media (max-width: 992px) {
-  .wedding-hero {
-    height: 60vh;
-    min-height: 450px;
-  }
-}
-
 @media (max-width: 768px) {
-  .wedding-hero {
-    height: 55vh;
-    min-height: 400px;
-  }
-
   .wedding-hero-bg {
     background-position: center left;
   }

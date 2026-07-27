@@ -2,7 +2,66 @@
    INTERACTIVE LOGIC - MONTIPAGE MEDIA GROUP
    ========================================================================== */
 
+// 0. PARTIALS LOADER (shared header/footer)
+async function loadPartials() {
+  const includes = document.querySelectorAll('[data-include]');
+  for (const el of includes) {
+    const url = el.getAttribute('data-include');
+    try {
+      const res = await fetch(url);
+      let html = await res.text();
+
+      // Replace template placeholders based on data attributes
+      const isHome = el.dataset.isHome === 'true';
+      const prefix = isHome ? '#' : 'index.html#';
+      const homeLink = isHome ? '#hero' : 'index.html';
+      const root = isHome ? '' : 'index.html';
+
+      html = html.replace(/\{HOME_LINK\}/g, homeLink);
+      html = html.replace(/\{PREFIX\}/g, prefix);
+      html = html.replace(/\{ROOT\}/g, root || 'index.html');
+
+      // Active nav link highlighting
+      const activePage = el.dataset.activePage || '';
+      const activeClass = 'nav-link-active';
+      const activeStyle = 'color: var(--color-light);';
+
+      // Map active page to the {ACTIVE_*} placeholder
+      const activeMap = {
+        'inicio': 'ACTIVE_INICIO',
+        'nosotros': 'ACTIVE_NOSOTROS',
+        'escolares': 'ACTIVE_ESCOLARES',
+        'wedding': 'ACTIVE_WEDDING',
+        'social': 'ACTIVE_SOCIAL',
+        'logros': 'ACTIVE_LOGROS'
+      };
+
+      // Replace only the matching active placeholder with the active style
+      const target = activeMap[activePage] || '';
+      html = html.replace(new RegExp(`\\{${target}\\}`, 'g'), activeStyle);
+      // Clear all other active placeholders
+      for (const key of Object.values(activeMap)) {
+        if (key !== target) {
+          html = html.replace(new RegExp(`\\{${key}\\}`, 'g'), '');
+        }
+      }
+
+      el.outerHTML = html;
+    } catch (err) {
+      console.warn('Failed to load partial:', url, err);
+    }
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Load shared partials first
+  loadPartials().then(() => {
+    // Re-initialize after partials are loaded
+    initApp();
+  });
+});
+
+function initApp() {
 
   // 1. STICKY HEADER SCROLL CLASS
   const header = document.getElementById('header');
@@ -172,4 +231,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   lazyLoadCarousel('.hero-carousel-bg');
   lazyLoadCarousel('.wedding-hero-bg');
-});
+}

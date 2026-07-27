@@ -1,0 +1,270 @@
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #1a1a1a;
+}
+
+/* Hero compacto para páginas de servicio */
+.hero.hero-sm {
+    height: 100vh;
+    min-height: 680px;
+}
+
+.hero.hero-sm .hero-video-container video {
+    object-position: center 30%;
+}
+
+.hero-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.45;
+}
+
+@media (max-width: 768px) {
+    .hero.hero-sm .hero-video-container video {
+        object-position: center 30%;
+    }
+}
+
+/* Carrusel CSS-only cross-fade (imágenes 2-17, la 1 está como fondo del hero) */
+.hero-carousel-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center 30%;
+    opacity: 0;
+    animation: heroFade 45s ease-in-out infinite;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.9) 100%);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: var(--color-light);
+    max-width: 1000px;
+    padding: 0 1.5rem;
+    margin-top: calc(var(--header-height) + 2.5rem);
+}
+
+.hero-content h1,
+.hero-content p {
+    color: var(--color-light);
+}
+
+.hero-tagline {
+    font-family: var(--font-heading);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 1.5rem;
+    color: var(--color-gray-300);
+    opacity: 0;
+    transform: translateY(20deg);
+    animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: var(--fs-xxl);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s;
+}
+
+.hero-subtitle {
+    font-family: var(--font-body);
+    font-size: var(--fs-md);
+    font-weight: 300;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    color: var(--color-gray-300);
+    opacity: 0;
+    transform: translateY(25px);
+    animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.6s;
+}
+
+.hero-actions {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.8s;
+}
+
+/* Animations */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll indicator */
+.hero-scroll-indicator {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-gray-500);
+    font-size: var(--fs-xs);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+/* When scroll indicator is inside hero-content (relative positioning) */
+.hero-content .hero-scroll-indicator {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin-top: 3rem;
+}
+
+.hero-scroll-indicator span {
+    width: 1px;
+    height: 40px;
+    background-color: var(--color-gray-700);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-scroll-indicator span::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: var(--color-light);
+    animation: scrollPin 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes scrollPin {
+    0% {
+        top: -50%;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+/* Reglas de animation-delay (15 imágenes, 45s total) */
+.hero-carousel-bg:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.hero-carousel-bg:nth-child(2) {
+    animation-delay: 3s;
+}
+
+.hero-carousel-bg:nth-child(3) {
+    animation-delay: 6s;
+}
+
+.hero-carousel-bg:nth-child(4) {
+    animation-delay: 9s;
+}
+
+.hero-carousel-bg:nth-child(5) {
+    animation-delay: 12s;
+}
+
+.hero-carousel-bg:nth-child(6) {
+    animation-delay: 15s;
+}
+
+.hero-carousel-bg:nth-child(7) {
+    animation-delay: 18s;
+}
+
+.hero-carousel-bg:nth-child(8) {
+    animation-delay: 21s;
+}
+
+.hero-carousel-bg:nth-child(9) {
+    animation-delay: 24s;
+}
+
+.hero-carousel-bg:nth-child(10) {
+    animation-delay: 27s;
+}
+
+.hero-carousel-bg:nth-child(11) {
+    animation-delay: 30s;
+}
+
+.hero-carousel-bg:nth-child(12) {
+    animation-delay: 33s;
+}
+
+.hero-carousel-bg:nth-child(13) {
+    animation-delay: 36s;
+}
+
+.hero-carousel-bg:nth-child(14) {
+    animation-delay: 39s;
+}
+
+.hero-carousel-bg:nth-child(15) {
+    animation-delay: 42s;
+}
+
+@keyframes heroFade {
+
+    0%,
+    1.6% {
+        opacity: 0;
+    }
+
+    2.6%,
+    4.7% {
+        opacity: 1;
+    }
+
+    6.6%,
+    100% {
+        opacity: 0;
+    }
+}
