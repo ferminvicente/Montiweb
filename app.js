@@ -144,4 +144,32 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 2000);
     });
   }
+
+
+  // 6. CAROUSEL LAZY LOADING (hero + wedding)
+  // Loads first 2 images immediately, then queues rest with 100ms intervals
+  // so they load progressively without blocking initial render.
+  const lazyLoadCarousel = (selector) => {
+    const items = document.querySelectorAll(selector);
+    if (items.length === 0) return;
+
+    const setBg = (el) => {
+      const src = el.getAttribute('data-src');
+      if (src && !el.style.backgroundImage) {
+        el.style.backgroundImage = `url('${src}')`;
+      }
+    };
+
+    // Load first 2 immediately
+    setBg(items[0]);
+    if (items[1]) setBg(items[1]);
+
+    // Queue remaining with 100ms intervals (all start loading within ~1.5s)
+    for (let i = 2; i < items.length; i++) {
+      setTimeout(() => setBg(items[i]), i * 100);
+    }
+  };
+
+  lazyLoadCarousel('.hero-carousel-bg');
+  lazyLoadCarousel('.wedding-hero-bg');
 });
