@@ -1,0 +1,10 @@
+/* ==========================================================================
+   SOCIAL MEDIA PAGE - Custom Styles
+   ========================================================================== */
+
+/* Hero background image for social media page */
+.hero-social {
+    background-image: url('../../img/social-hero.jpeg') !important;
+    background-size: cover !important;
+    background-position: center center !important;
+}
