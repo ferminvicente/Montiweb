@@ -8,3 +8,13 @@
     background-size: cover !important;
     background-position: center center !important;
 }
+
+/* Reduce a la mitad el espacio vertical entre "Qué incluye" y los planes.
+   .section usa padding 7rem; la mitad es 3.5rem en cada lado. */
+#que-incluye {
+    padding-bottom: 3.5rem;
+}
+
+#planes-social {
+    padding-top: 3.5rem;
+}
